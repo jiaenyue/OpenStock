@@ -6,9 +6,14 @@ import {nextCookies} from "better-auth/next-js";
 
 let authInstance: ReturnType<typeof betterAuth> | null = null;
 
-
+/**
+ * 获取 betterAuth 实例。
+ *
+ * @returns {Promise<ReturnType<typeof betterAuth>>} betterAuth 实例。
+ * @throws {Error} 如果 MongoDB 连接未找到。
+ */
 export const getAuth = async () => {
-    if(authInstance) {
+    if (authInstance) {
         return authInstance;
     }
 

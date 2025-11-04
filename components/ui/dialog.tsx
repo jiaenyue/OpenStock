@@ -6,30 +6,61 @@ import { XIcon } from "lucide-react"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * 根组件，用于包裹整个对话框。
+ *
+ * @param {object} props - 组件属性。
+ * @returns {JSX.Element} 渲染后的对话框根组件。
+ */
 function Dialog({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Root>) {
   return <DialogPrimitive.Root data-slot="dialog" {...props} />
 }
 
+/**
+ * 用于打开对话框的按钮。
+ *
+ * @param {object} props - 组件属性。
+ * @returns {JSX.Element} 渲染后的对话框触发器组件。
+ */
 function DialogTrigger({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Trigger>) {
   return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />
 }
 
+/**
+ * 将对话框内容渲染到 DOM 中的不同位置。
+ *
+ * @param {object} props - 组件属性。
+ * @returns {JSX.Element} 渲染后的对话框入口组件。
+ */
 function DialogPortal({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Portal>) {
   return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />
 }
 
+/**
+ * 用于关闭对话框的按钮。
+ *
+ * @param {object} props - 组件属性。
+ * @returns {JSX.Element} 渲染后的对话框关闭组件。
+ */
 function DialogClose({
   ...props
 }: React.ComponentProps<typeof DialogPrimitive.Close>) {
   return <DialogPrimitive.Close data-slot="dialog-close" {...props} />
 }
 
+/**
+ * 在对话框后面显示的半透明遮罩层。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的对话框遮罩层组件。
+ */
 function DialogOverlay({
   className,
   ...props
@@ -46,6 +77,15 @@ function DialogOverlay({
   )
 }
 
+/**
+ * 对话框的主要内容区域。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @param {React.ReactNode} props.children - 要在对话框中渲染的子组件。
+ * @param {boolean} [props.showCloseButton] - 如果为 true，则显示关闭按钮。
+ * @returns {JSX.Element} 渲染后的对话框内容组件。
+ */
 function DialogContent({
   className,
   children,
@@ -80,6 +120,13 @@ function DialogContent({
   )
 }
 
+/**
+ * 对话框的头部区域。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的对话框头部组件。
+ */
 function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -90,6 +137,13 @@ function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * 对话框的尾部区域。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的对话框尾部组件。
+ */
 function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
   return (
     <div
@@ -103,6 +157,13 @@ function DialogFooter({ className, ...props }: React.ComponentProps<"div">) {
   )
 }
 
+/**
+ * 对话框的标题。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的对话框标题组件。
+ */
 function DialogTitle({
   className,
   ...props
@@ -116,6 +177,13 @@ function DialogTitle({
   )
 }
 
+/**
+ * 对话框的描述。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的对话框描述组件。
+ */
 function DialogDescription({
   className,
   ...props

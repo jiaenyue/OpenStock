@@ -6,6 +6,11 @@ export const metadata: Metadata = {
   description: 'Free help and community support - no barriers, just guidance',
 };
 
+/**
+ * 渲染帮助中心页面。
+ *
+ * @returns {JSX.Element} 帮助中心页面。
+ */
 export default function HelpPage() {
   const faqs = [
     {

@@ -1,7 +1,12 @@
 'use server';
 
-import {connectToDatabase} from "@/database/mongoose";
+import { connectToDatabase } from '@/database/mongoose';
 
+/**
+ * 获取所有用于发送新闻邮件的用户。
+ *
+ * @returns {Promise<Array<{id: string, email: string, name: string}>>} 一个包含用户信息的数组。
+ */
 export const getAllUsersForNewsEmail = async () => {
     try {
         const mongoose = await connectToDatabase();

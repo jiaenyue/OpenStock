@@ -7,8 +7,25 @@ import {
     TECHNICAL_ANALYSIS_WIDGET_CONFIG,
     COMPANY_PROFILE_WIDGET_CONFIG,
     COMPANY_FINANCIALS_WIDGET_CONFIG,
-} from "@/lib/constants";
+} from '@/lib/constants';
 
+/**
+ * StockDetails 页面的属性。
+ * @property {object} params - 页面参数。
+ * @property {string} params.symbol - 股票代码。
+ */
+type StockDetailsPageProps = {
+    params: {
+        symbol: string;
+    };
+};
+
+/**
+ * 渲染股票详情页面。
+ *
+ * @param {StockDetailsPageProps} props - StockDetails 页面的属性。
+ * @returns {JSX.Element} 股票详情页面。
+ */
 export default async function StockDetails({ params }: StockDetailsPageProps) {
     const { symbol } = await params;
     const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;

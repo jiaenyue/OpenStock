@@ -15,9 +15,15 @@ if (!cached){
     cached = global.mongooseCache = { conn: null, promise: null };
 }
 
+/**
+ * 连接到 MongoDB 数据库。
+ *
+ * @returns {Promise<typeof mongoose>} Mongoose 实例。
+ * @throws {Error} 如果 MongoDB URI 丢失。
+ */
 export const connectToDatabase = async () => {
-    if(!MONGODB_URI){
-        throw new Error("MongoDB URI is missing");
+    if (!MONGODB_URI) {
+        throw new Error('MongoDB URI is missing');
     }
 
     if(cached.conn) return cached.conn;

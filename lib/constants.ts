@@ -1,10 +1,17 @@
+/**
+ * 导航项。
+ * @type {Array<{href: string, label: string}>}
+ */
 export const NAV_ITEMS = [
     { href: '/', label: 'Dashboard' },
     { href: '/search', label: 'Search' },
     // { href: '/watchlist', label: 'Watchlist' },
 ];
 
-// Sign-up form select options
+/**
+ * 投资目标选项。
+ * @type {Array<{value: string, label: string}>}
+ */
 export const INVESTMENT_GOALS = [
     { value: 'Growth', label: 'Growth' },
     { value: 'Income', label: 'Income' },
@@ -12,12 +19,20 @@ export const INVESTMENT_GOALS = [
     { value: 'Conservative', label: 'Conservative' },
 ];
 
+/**
+ * 风险承受能力选项。
+ * @type {Array<{value: string, label: string}>}
+ */
 export const RISK_TOLERANCE_OPTIONS = [
     { value: 'Low', label: 'Low' },
     { value: 'Medium', label: 'Medium' },
     { value: 'High', label: 'High' },
 ];
 
+/**
+ * 首选行业选项。
+ * @type {Array<{value: string, label: string}>}
+ */
 export const PREFERRED_INDUSTRIES = [
     { value: 'Technology', label: 'Technology' },
     { value: 'Healthcare', label: 'Healthcare' },
@@ -26,17 +41,28 @@ export const PREFERRED_INDUSTRIES = [
     { value: 'Consumer Goods', label: 'Consumer Goods' },
 ];
 
+/**
+ * 警报类型选项。
+ * @type {Array<{value: string, label: string}>}
+ */
 export const ALERT_TYPE_OPTIONS = [
     { value: 'upper', label: 'Upper' },
     { value: 'lower', label: 'Lower' },
 ];
 
+/**
+ * 条件选项。
+ * @type {Array<{value: string, label: string}>}
+ */
 export const CONDITION_OPTIONS = [
     { value: 'greater', label: 'Greater than (>)' },
     { value: 'less', label: 'Less than (<)' },
 ];
 
-// TradingView Charts
+/**
+ * 市场概览小部件的配置。
+ * @type {object}
+ */
 export const MARKET_OVERVIEW_WIDGET_CONFIG = {
     colorTheme: 'dark', // dark mode
     dateRange: '12M', // last 12 months
@@ -95,6 +121,10 @@ export const MARKET_OVERVIEW_WIDGET_CONFIG = {
     showChart: true, // display mini chart
 };
 
+/**
+ * 热图小部件的配置。
+ * @type {object}
+ */
 export const HEATMAP_WIDGET_CONFIG = {
     dataSource: 'SPX500',
     blockSize: 'market_cap_basic',
@@ -114,6 +144,10 @@ export const HEATMAP_WIDGET_CONFIG = {
     height: '600',
 };
 
+/**
+ * 热门新闻小部件的配置。
+ * @type {object}
+ */
 export const TOP_STORIES_WIDGET_CONFIG = {
     displayMode: 'regular',
     feedMode: 'market',
@@ -125,6 +159,10 @@ export const TOP_STORIES_WIDGET_CONFIG = {
     height: '600',
 };
 
+/**
+ * 市场数据小部件的配置。
+ * @type {object}
+ */
 export const MARKET_DATA_WIDGET_CONFIG = {
     title: 'Stocks',
     width: '100%',
@@ -170,6 +208,11 @@ export const MARKET_DATA_WIDGET_CONFIG = {
     ],
 };
 
+/**
+ * 股票信息小部件的配置。
+ * @param {string} symbol - 股票代码。
+ * @returns {object} 小部件的配置。
+ */
 export const SYMBOL_INFO_WIDGET_CONFIG = (symbol: string) => ({
     symbol: symbol.toUpperCase(),
     colorTheme: 'dark',
@@ -179,6 +222,11 @@ export const SYMBOL_INFO_WIDGET_CONFIG = (symbol: string) => ({
     height: 170,
 });
 
+/**
+ * K线图小部件的配置。
+ * @param {string} symbol - 股票代码。
+ * @returns {object} 小部件的配置。
+ */
 export const CANDLE_CHART_WIDGET_CONFIG = (symbol: string) => ({
     allow_symbol_change: false,
     calendar: false,
@@ -205,6 +253,11 @@ export const CANDLE_CHART_WIDGET_CONFIG = (symbol: string) => ({
     height: 600,
 });
 
+/**
+ * 基线图小部件的配置。
+ * @param {string} symbol - 股票代码。
+ * @returns {object} 小部件的配置。
+ */
 export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
     allow_symbol_change: false,
     calendar: false,
@@ -231,6 +284,11 @@ export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
     height: 600,
 });
 
+/**
+ * 技术分析小部件的配置。
+ * @param {string} symbol - 股票代码。
+ * @returns {object} 小部件的配置。
+ */
 export const TECHNICAL_ANALYSIS_WIDGET_CONFIG = (symbol: string) => ({
     symbol: symbol.toUpperCase(),
     colorTheme: 'dark',
@@ -242,6 +300,11 @@ export const TECHNICAL_ANALYSIS_WIDGET_CONFIG = (symbol: string) => ({
     largeChartUrl: '',
 });
 
+/**
+ * 公司简介小部件的配置。
+ * @param {string} symbol - 股票代码。
+ * @returns {object} 小部件的配置。
+ */
 export const COMPANY_PROFILE_WIDGET_CONFIG = (symbol: string) => ({
     symbol: symbol.toUpperCase(),
     colorTheme: 'dark',
@@ -251,6 +314,11 @@ export const COMPANY_PROFILE_WIDGET_CONFIG = (symbol: string) => ({
     height: 440,
 });
 
+/**
+ * 公司财务小部件的配置。
+ * @param {string} symbol - 股票代码。
+ * @returns {object} 小部件的配置。
+ */
 export const COMPANY_FINANCIALS_WIDGET_CONFIG = (symbol: string) => ({
     symbol: symbol.toUpperCase(),
     colorTheme: 'dark',
@@ -262,6 +330,10 @@ export const COMPANY_FINANCIALS_WIDGET_CONFIG = (symbol: string) => ({
     largeChartUrl: '',
 });
 
+/**
+ * 热门股票代码。
+ * @type {string[]}
+ */
 export const POPULAR_STOCK_SYMBOLS = [
     // Tech Giants (the big technology companies)
     'AAPL',
@@ -324,9 +396,17 @@ export const POPULAR_STOCK_SYMBOLS = [
     'SE',
 ];
 
+/**
+ * 没有市场新闻时显示的消息。
+ * @type {string}
+ */
 export const NO_MARKET_NEWS =
     '<p class="mobile-text" style="margin:0 0 20px 0;font-size:16px;line-height:1.6;color:#4b5563;">No market news available today. Please check back tomorrow.</p>';
 
+/**
+ * 观察列表格的表头。
+ * @type {string[]}
+ */
 export const WATCHLIST_TABLE_HEADER = [
     'Company',
     'Symbol',

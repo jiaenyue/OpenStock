@@ -1,3 +1,7 @@
+/**
+ * 欢迎电子邮件的 HTML 模板。
+ * @type {string}
+ */
 export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,6 +169,10 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
+/**
+ * 新闻摘要电子邮件的 HTML 模板。
+ * @type {string}
+ */
 export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -304,6 +312,10 @@ export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
+/**
+ * 股票价格上涨警报电子邮件的 HTML 模板。
+ * @type {string}
+ */
 export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -512,6 +524,10 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
+/**
+ * 股票价格下跌警报电子邮件的 HTML 模板。
+ * @type {string}
+ */
 export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -721,6 +737,10 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
+/**
+ * 成交量警报电子邮件的 HTML 模板。
+ * @type {string}
+ */
 export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -941,6 +961,10 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
+/**
+ * 非活跃用户提醒电子邮件的 HTML 模板。
+ * @type {string}
+ */
 export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>

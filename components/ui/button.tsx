@@ -34,6 +34,16 @@ const buttonVariants = cva(
   }
 )
 
+/**
+ * 一个可点击的按钮，具有多种样式变体。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @param {string} [props.variant] - 按钮的视觉样式（例如 "default"、"destructive"）。
+ * @param {string} [props.size] - 按钮的大小（例如 "default"、"sm"、"lg"）。
+ * @param {boolean} [props.asChild] - 如果为 true，则将所有属性和行为传递给直接子组件。
+ * @returns {JSX.Element} 渲染后的按钮组件。
+ */
 function Button({
   className,
   variant,

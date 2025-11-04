@@ -1,13 +1,20 @@
 import Header from "@/components/Header";
 import {auth} from "@/lib/better-auth/auth";
 import {headers} from "next/headers";
-import {redirect} from "next/navigation";
-import Footer from "@/components/Footer";
+import { redirect } from 'next/navigation';
+import Footer from '@/components/Footer';
 
-const Layout = async ({ children }: { children : React.ReactNode }) => {
+/**
+ * 根页面的布局。
+ *
+ * @param {object} props - 组件属性。
+ * @param {React.ReactNode} props.children - 要渲染的子组件。
+ * @returns {JSX.Element} 根页面的布局。
+ */
+const Layout = async ({ children }: { children: React.ReactNode }) => {
     const session = await auth.api.getSession({ headers: await headers() });
 
-    if(!session?.user) redirect('/sign-in');
+    if (!session?.user) redirect('/sign-in');
 
     const user = {
         id: session.user.id,

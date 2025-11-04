@@ -7,6 +7,14 @@ import { cache } from 'react';
 const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 const NEXT_PUBLIC_FINNHUB_API_KEY = process.env.NEXT_PUBLIC_FINNHUB_API_KEY ?? '';
 
+/**
+ * 从给定的 URL 获取 JSON 数据。
+ * @template T
+ * @param {string} url - 要获取数据的 URL。
+ * @param {number} [revalidateSeconds] - 缓存重新验证的秒数。
+ * @returns {Promise<T>} 解析后的 JSON 数据。
+ * @throws {Error} 如果网络请求失败。
+ */
 async function fetchJSON<T>(url: string, revalidateSeconds?: number): Promise<T> {
     const options: RequestInit & { next?: { revalidate?: number } } = revalidateSeconds
         ? { cache: 'force-cache', next: { revalidate: revalidateSeconds } }
@@ -22,6 +30,13 @@ async function fetchJSON<T>(url: string, revalidateSeconds?: number): Promise<T>
 
 export { fetchJSON };
 
+/**
+ * 获取市场新闻文章。
+ *
+ * @param {string[]} [symbols] - 要获取新闻的股票代码数组。
+ * @returns {Promise<MarketNewsArticle[]>} 一个市场新闻文章数组。
+ * @throws {Error} 如果 API 密钥未配置或新闻获取失败。
+ */
 export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> {
     try {
         const range = getDateRange(5);
@@ -98,6 +113,12 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
     }
 }
 
+/**
+ * 搜索股票。
+ *
+ * @param {string} [query] - 搜索查询。
+ * @returns {Promise<StockWithWatchlistStatus[]>} 一个带有观察列表状态的股票数组。
+ */
 export const searchStocks = cache(async (query?: string): Promise<StockWithWatchlistStatus[]> => {
     try {
         const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;

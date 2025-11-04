@@ -4,11 +4,19 @@ import {sendNewsSummaryEmail, sendWelcomeEmail} from "@/lib/nodemailer";
 import {getAllUsersForNewsEmail} from "@/lib/actions/user.actions";
 import { getWatchlistSymbolsByEmail } from "@/lib/actions/watchlist.actions";
 import { getNews } from "@/lib/actions/finnhub.actions";
-import { getFormattedTodayDate } from "@/lib/utils";
+import { getFormattedTodayDate } from '@/lib/utils';
 
+/**
+ * 用户注册时发送欢迎邮件。
+ *
+ * @param {object} context - 函数上下文。
+ * @param {object} context.event - 触发函数的事件。
+ * @param {object} context.step - Inngest 步骤对象。
+ * @returns {Promise<{success: boolean, message: string}>} 一个包含成功状态和消息的对象。
+ */
 export const sendSignUpEmail = inngest.createFunction(
     { id: 'sign-up-email' },
-    { event: 'app/user.created'},
+    { event: 'app/user.created' },
     async ({ event, step }) => {
         const userProfile = `
             - Country: ${event.data.country}
@@ -48,12 +56,19 @@ export const sendSignUpEmail = inngest.createFunction(
     }
 )
 
+/**
+ * 发送每日新闻摘要电子邮件。
+ *
+ * @param {object} context - 函数上下文。
+ * @param {object} context.step - Inngest 步骤对象。
+ * @returns {Promise<{success: boolean, message: string}>} 一个包含成功状态和消息的对象。
+ */
 export const sendDailyNewsSummary = inngest.createFunction(
     { id: 'daily-news-summary' },
     [ { event: 'app/send.daily.news' }, { cron: '0 12 * * *' } ],
     async ({ step }) => {
         // Step #1: Get all users for news delivery
-        const users = await step.run('get-all-users', getAllUsersForNewsEmail)
+        const users = await step.run('get-all-users', getAllUsersForNewsEmail);
 
         if(!users || users.length === 0) return { success: false, message: 'No users found for news email' };
 

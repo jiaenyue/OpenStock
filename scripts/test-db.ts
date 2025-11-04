@@ -1,5 +1,10 @@
-import { connectToDatabase } from "../database/mongoose";
+import { connectToDatabase } from '../database/mongoose';
 
+/**
+ * 测试数据库连接。
+ *
+ * @returns {Promise<void>}
+ */
 async function main() {
     try {
         await connectToDatabase();

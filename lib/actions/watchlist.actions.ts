@@ -3,6 +3,12 @@
 import { connectToDatabase } from '@/database/mongoose';
 import { Watchlist } from '@/database/models/watchlist.model';
 
+/**
+ * 通过电子邮件获取用户的观察列表中的股票代码。
+ *
+ * @param {string} email - 用户的电子邮件。
+ * @returns {Promise<string[]>} 一个包含股票代码的数组。
+ */
 export async function getWatchlistSymbolsByEmail(email: string): Promise<string[]> {
     if (!email) return [];
 

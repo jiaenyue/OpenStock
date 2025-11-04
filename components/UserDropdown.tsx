@@ -12,12 +12,23 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {useRouter} from "next/navigation";
 import {Button} from "@/components/ui/button";
 import {LogOut} from "lucide-react";
-import NavItems from "@/components/NavItems";
-import {signOut} from "@/lib/actions/auth.actions";
+import NavItems from '@/components/NavItems';
+import { signOut } from '@/lib/actions/auth.actions';
 
-const UserDropdown = ({ user, initialStocks }: {user: User, initialStocks: StockWithWatchlistStatus[]}) => {
+/**
+ * 渲染一个包含用户信息的下拉菜单。
+ *
+ * @param {object} props - 组件属性。
+ * @param {User} props.user - 当前登录的用户。
+ * @param {StockWithWatchlistStatus[]} props.initialStocks - 初始股票列表。
+ * @returns {JSX.Element} 一个用户下拉菜单。
+ */
+const UserDropdown = ({ user, initialStocks }: { user: User; initialStocks: StockWithWatchlistStatus[] }) => {
     const router = useRouter();
 
+    /**
+     * 处理用户退出登录。
+     */
     const handleSignOut = async () => {
         await signOut();
         router.push("/sign-in");

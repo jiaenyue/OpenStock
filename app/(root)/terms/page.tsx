@@ -5,10 +5,15 @@ export const metadata: Metadata = {
   description: 'Fair terms of service - built on trust, transparency, and community values',
 };
 
+/**
+ * 渲染服务条款页面。
+ *
+ * @returns {JSX.Element} 服务条款页面。
+ */
 export default function TermsPage() {
   return (
-    <div className="container mx-auto px-4 py-12 max-w-4xl">
-      <div className="mb-8">
+    <div className='container mx-auto px-4 py-12 max-w-4xl'>
+      <div className='mb-8'>
         <h1 className="text-4xl font-bold text-gray-100 mb-4">Terms of Service</h1>
         <p className="text-gray-300 mb-4">
          <p className="text-gray-300 mb-4">

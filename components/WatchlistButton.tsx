@@ -1,17 +1,44 @@
 "use client";
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState } from 'react';
 
+/**
+ * WatchlistButton 组件的属性。
+ * @property {string} symbol - 股票代码。
+ * @property {string} company - 公司名称。
+ * @property {boolean} [isInWatchlist] - 指示股票是否已在观察列表中。
+ * @property {boolean} [showTrashIcon] - 指示是否显示垃圾桶图标。
+ * @property {'button' | 'icon'} [type] - 按钮的类型。
+ * @property {(symbol: string, isInWatchlist: boolean) => void} [onWatchlistChange] - 当观察列表状态改变时调用的函数。
+ */
+type WatchlistButtonProps = {
+    symbol: string;
+    company: string;
+    isInWatchlist?: boolean;
+    showTrashIcon?: boolean;
+    type?: 'button' | 'icon';
+    onWatchlistChange?: (symbol: string, isInWatchlist: boolean) => void;
+};
 
+/**
+ * 渲染一个用于将股票添加到观察列表或从观察列表中移除的按钮。
+ *
+ * @param {WatchlistButtonProps} props - WatchlistButton 的属性。
+ * @returns {JSX.Element} 一个观察列表按钮。
+ */
 const WatchlistButton = ({
                              symbol,
                              company,
                              isInWatchlist,
                              showTrashIcon = false,
-                             type = "button",
+                             type = 'button',
                              onWatchlistChange,
                          }: WatchlistButtonProps) => {
     const [added, setAdded] = useState<boolean>(!!isInWatchlist);
 
+    /**
+     * 根据按钮状态确定按钮标签。
+     * @returns {string} 按钮的标签。
+     */
     const label = useMemo(() => {
         if (type === "icon") return added ? "" : "";
         return added ? "Remove from Watchlist" : "Add to Watchlist";

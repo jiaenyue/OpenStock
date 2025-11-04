@@ -1,6 +1,11 @@
 import 'dotenv/config';
 import mongoose from 'mongoose';
 
+/**
+ * 测试数据库连接。
+ *
+ * @returns {Promise<void>}
+ */
 async function main() {
     const uri = process.env.MONGODB_URI;
     if (!uri) {

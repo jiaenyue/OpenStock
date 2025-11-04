@@ -5,6 +5,13 @@ import * as AvatarPrimitive from "@radix-ui/react-avatar"
 
 import { cn } from "@/lib/utils"
 
+/**
+ * 一个圆形的用户头像。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的头像组件。
+ */
 function Avatar({
   className,
   ...props
@@ -21,6 +28,13 @@ function Avatar({
   )
 }
 
+/**
+ * 头像的图像部分。当图像加载失败时，将显示回退内容。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的头像图像组件。
+ */
 function AvatarImage({
   className,
   ...props
@@ -34,6 +48,13 @@ function AvatarImage({
   )
 }
 
+/**
+ * 当头像图像加载失败时显示的回退内容。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的头像回退组件。
+ */
 function AvatarFallback({
   className,
   ...props

@@ -13,6 +13,13 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 
+/**
+ * 一个命令面板，允许用户搜索和执行操作。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的命令组件。
+ */
 function Command({
   className,
   ...props
@@ -29,6 +36,17 @@ function Command({
   )
 }
 
+/**
+ * 一个在对话框中显示命令面板的组件。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.title] - 对话框的标题。
+ * @param {string} [props.description] - 对话框的描述。
+ * @param {React.ReactNode} props.children - 要在对话框中渲染的子组件。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @param {boolean} [props.showCloseButton] - 如果为 true，则显示关闭按钮。
+ * @returns {JSX.Element} 渲染后的命令对话框组件。
+ */
 function CommandDialog({
   title = "Command Palette",
   description = "Search for a command to run...",
@@ -60,6 +78,13 @@ function CommandDialog({
   )
 }
 
+/**
+ * 命令面板的输入字段。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的命令输入组件。
+ */
 function CommandInput({
   className,
   ...props
@@ -82,6 +107,13 @@ function CommandInput({
   )
 }
 
+/**
+ * 命令面板的项目列表。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的命令列表组件。
+ */
 function CommandList({
   className,
   ...props
@@ -98,6 +130,12 @@ function CommandList({
   )
 }
 
+/**
+ * 当没有搜索结果时在命令面板中显示的消息。
+ *
+ * @param {object} props - 组件属性。
+ * @returns {JSX.Element} 渲染后的命令空状态组件。
+ */
 function CommandEmpty({
   ...props
 }: React.ComponentProps<typeof CommandPrimitive.Empty>) {
@@ -110,6 +148,13 @@ function CommandEmpty({
   )
 }
 
+/**
+ * 将命令项分组。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的命令组组件。
+ */
 function CommandGroup({
   className,
   ...props
@@ -126,6 +171,13 @@ function CommandGroup({
   )
 }
 
+/**
+ * 分隔命令组。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的命令分隔符组件。
+ */
 function CommandSeparator({
   className,
   ...props
@@ -139,6 +191,13 @@ function CommandSeparator({
   )
 }
 
+/**
+ * 命令面板中的一个项目。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的命令项组件。
+ */
 function CommandItem({
   className,
   ...props
@@ -155,6 +214,13 @@ function CommandItem({
   )
 }
 
+/**
+ * 命令项的键盘快捷键。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} [props.className] - 应用于组件的额外 CSS 类。
+ * @returns {JSX.Element} 渲染后的命令快捷键组件。
+ */
 function CommandShortcut({
   className,
   ...props
