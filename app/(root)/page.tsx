@@ -3,20 +3,23 @@ import {
     HEATMAP_WIDGET_CONFIG,
     MARKET_DATA_WIDGET_CONFIG,
     MARKET_OVERVIEW_WIDGET_CONFIG,
-    TOP_STORIES_WIDGET_CONFIG,
-} from '@/lib/constants';
-import { sendDailyNewsSummary } from '@/lib/inngest/functions';
+    TOP_STORIES_WIDGET_CONFIG
+} from "@/lib/constants";
+import {sendDailyNewsSummary} from "@/lib/inngest/functions";
 
 /**
- * 渲染主页。
+ * 首页组件，用于展示多个 TradingView 小部件。
  *
- * @returns {JSX.Element} 主页组件。
+ * 这个组件渲染了市场概览、股票热图、市场报价和头条新闻等多个 TradingView 小部件，
+ * 为用户提供了一个全面的金融市场信息展示页面。
+ *
+ * @returns {JSX.Element} 渲染后的首页组件。
  */
 const Home = () => {
     const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
 
     return (
-        <div className='flex min-h-screen home-wrapper'>
+        <div className="flex min-h-screen home-wrapper">
             <section className="grid w-full gap-8 home-section">
                 <div className="md:col-span-1 xl:col-span-1">
                     <TradingViewWidget

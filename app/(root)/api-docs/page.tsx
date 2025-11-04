@@ -6,14 +6,17 @@ export const metadata: Metadata = {
 };
 
 /**
- * 渲染 API 文档页面。
+ * API 文档页面组件。
  *
- * @returns {JSX.Element} API 文档页面。
+ * 该页面提供了 OpenStock API 的详细文档，包括其理念、社区支持和开源承诺。
+ * 旨在为开发者提供一个免费、开放且易于使用的 API 指南。
+ *
+ * @returns {JSX.Element} 渲染后的 API 文档页面。
  */
 export default function ApiDocsPage() {
   return (
-    <div className='container mx-auto px-4 py-12 max-w-4xl'>
-      <div className='mb-8'>
+    <div className="container mx-auto px-4 py-12 max-w-4xl">
+      <div className="mb-8">
         <h1 className="text-4xl font-bold text-gray-200 mb-4">Free & Open API Documentation</h1>
         <p className="text-xl text-gray-200 mb-4">
           Complete guide to integrating with the OpenStock API - completely free, forever

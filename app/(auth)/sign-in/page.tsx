@@ -12,16 +12,6 @@ import OpenDevSocietyBranding from '@/components/OpenDevSocietyBranding';
 import React from 'react';
 
 /**
- * 登录表单的数据类型。
- * @property {string} email - 用户的电子邮件。
- * @property {string} password - 用户的密码。
- */
-type SignInFormData = {
-    email: string;
-    password: string;
-};
-
-/**
  * 渲染一个登录表单。
  *
  * @returns {JSX.Element} 一个登录表单。

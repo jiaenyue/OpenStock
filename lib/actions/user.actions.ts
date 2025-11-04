@@ -1,11 +1,14 @@
 'use server';
 
-import { connectToDatabase } from '@/database/mongoose';
+import {connectToDatabase} from "@/database/mongoose";
 
 /**
- * 获取所有用于发送新闻邮件的用户。
+ * 从数据库中获取所有用于发送新闻邮件的用户。
  *
- * @returns {Promise<Array<{id: string, email: string, name: string}>>} 一个包含用户信息的数组。
+ * 此函数连接到数据库，查询 "user" 集合，并返回所有拥有有效 email 和 name 的用户列表。
+ * 返回的用户对象只包含 id、email 和 name 字段。
+ *
+ * @returns {Promise<Array<{id: string, email: string, name: string}>>} - 一个解析为用户对象数组的 Promise。如果发生错误，则返回一个空数组。
  */
 export const getAllUsersForNewsEmail = async () => {
     try {

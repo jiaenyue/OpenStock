@@ -1,5 +1,10 @@
 /**
- * 导航项。
+ * @file 该文件包含了整个应用程序中使用的常量。
+ * 包括导航项、表单选项、TradingView 小部件配置等。
+ */
+
+/**
+ * 导航栏项目数组。
  * @type {Array<{href: string, label: string}>}
  */
 export const NAV_ITEMS = [
@@ -9,7 +14,7 @@ export const NAV_ITEMS = [
 ];
 
 /**
- * 投资目标选项。
+ * 注册表单中的投资目标选项。
  * @type {Array<{value: string, label: string}>}
  */
 export const INVESTMENT_GOALS = [
@@ -20,7 +25,7 @@ export const INVESTMENT_GOALS = [
 ];
 
 /**
- * 风险承受能力选项。
+ * 注册表单中的风险承受能力选项。
  * @type {Array<{value: string, label: string}>}
  */
 export const RISK_TOLERANCE_OPTIONS = [
@@ -30,7 +35,7 @@ export const RISK_TOLERANCE_OPTIONS = [
 ];
 
 /**
- * 首选行业选项。
+ * 注册表单中的首选行业选项。
  * @type {Array<{value: string, label: string}>}
  */
 export const PREFERRED_INDUSTRIES = [
@@ -42,7 +47,7 @@ export const PREFERRED_INDUSTRIES = [
 ];
 
 /**
- * 警报类型选项。
+ * 提醒类型选项（例如，价格上限或下限）。
  * @type {Array<{value: string, label: string}>}
  */
 export const ALERT_TYPE_OPTIONS = [
@@ -51,7 +56,7 @@ export const ALERT_TYPE_OPTIONS = [
 ];
 
 /**
- * 条件选项。
+ * 提醒条件选项（例如，大于或小于）。
  * @type {Array<{value: string, label: string}>}
  */
 export const CONDITION_OPTIONS = [
@@ -60,25 +65,24 @@ export const CONDITION_OPTIONS = [
 ];
 
 /**
- * 市场概览小部件的配置。
- * @type {object}
+ * TradingView 市场概览小部件的配置对象。
  */
 export const MARKET_OVERVIEW_WIDGET_CONFIG = {
-    colorTheme: 'dark', // dark mode
-    dateRange: '12M', // last 12 months
-    locale: 'en', // language
-    largeChartUrl: '', // link to a large chart if needed
-    isTransparent: true, // makes background transparent
-    showFloatingTooltip: true, // show tooltip on hover
-    plotLineColorGrowing: '#0FEDBE', // line color when price goes up
-    plotLineColorFalling: '#0FEDBE', // line color when price falls
-    gridLineColor: 'rgba(240, 243, 250, 0)', // grid line color
-    scaleFontColor: '#DBDBDB', // font color for scale
-    belowLineFillColorGrowing: 'rgba(41, 98, 255, 0.12)', // fill under line when growing
-    belowLineFillColorFalling: 'rgba(41, 98, 255, 0.12)', // fill under line when falling
+    colorTheme: 'dark', // 暗色主题
+    dateRange: '12M', // 最近12个月
+    locale: 'en', // 语言
+    largeChartUrl: '', // 需要时链接到大图
+    isTransparent: true, // 使背景透明
+    showFloatingTooltip: true, // 悬停时显示工具提示
+    plotLineColorGrowing: '#0FEDBE', // 价格上涨时线条颜色
+    plotLineColorFalling: '#0FEDBE', // 价格下跌时线条颜色
+    gridLineColor: 'rgba(240, 243, 250, 0)', // 网格线颜色
+    scaleFontColor: '#DBDBDB', // 刻度字体颜色
+    belowLineFillColorGrowing: 'rgba(41, 98, 255, 0.12)', // 上涨时线下填充色
+    belowLineFillColorFalling: 'rgba(41, 98, 255, 0.12)', // 下跌时线下填充色
     belowLineFillColorGrowingBottom: 'rgba(41, 98, 255, 0)',
     belowLineFillColorFallingBottom: 'rgba(41, 98, 255, 0)',
-    symbolActiveColor: 'rgba(15, 237, 190, 0.05)', // highlight color for active symbol
+    symbolActiveColor: 'rgba(15, 237, 190, 0.05)', // 激活符号的高亮颜色
     tabs: [
         {
             title: 'Financial',
@@ -113,17 +117,16 @@ export const MARKET_OVERVIEW_WIDGET_CONFIG = {
             ],
         },
     ],
-    support_host: 'https://www.tradingview.com', // TradingView host
-    backgroundColor: '#141414', // background color
-    width: '100%', // full width
-    height: 600, // height in px
-    showSymbolLogo: true, // show logo next to symbols
-    showChart: true, // display mini chart
+    support_host: 'https://www.tradingview.com', // TradingView 主机
+    backgroundColor: '#141414', // 背景颜色
+    width: '100%', // 全宽
+    height: 600, // 高度（像素）
+    showSymbolLogo: true, // 显示符号旁边的标志
+    showChart: true, // 显示迷你图表
 };
 
 /**
- * 热图小部件的配置。
- * @type {object}
+ * TradingView 股票热图小部件的配置对象。
  */
 export const HEATMAP_WIDGET_CONFIG = {
     dataSource: 'SPX500',
@@ -145,8 +148,7 @@ export const HEATMAP_WIDGET_CONFIG = {
 };
 
 /**
- * 热门新闻小部件的配置。
- * @type {object}
+ * TradingView 头条新闻小部件的配置对象。
  */
 export const TOP_STORIES_WIDGET_CONFIG = {
     displayMode: 'regular',
@@ -160,8 +162,7 @@ export const TOP_STORIES_WIDGET_CONFIG = {
 };
 
 /**
- * 市场数据小部件的配置。
- * @type {object}
+ * TradingView 市场数据小部件的配置对象。
  */
 export const MARKET_DATA_WIDGET_CONFIG = {
     title: 'Stocks',
@@ -209,9 +210,9 @@ export const MARKET_DATA_WIDGET_CONFIG = {
 };
 
 /**
- * 股票信息小部件的配置。
+ * 创建 TradingView 符号信息小部件配置的函数。
  * @param {string} symbol - 股票代码。
- * @returns {object} 小部件的配置。
+ * @returns {object} 小部件的配置对象。
  */
 export const SYMBOL_INFO_WIDGET_CONFIG = (symbol: string) => ({
     symbol: symbol.toUpperCase(),
@@ -223,9 +224,9 @@ export const SYMBOL_INFO_WIDGET_CONFIG = (symbol: string) => ({
 });
 
 /**
- * K线图小部件的配置。
+ * 创建 TradingView K线图小部件配置的函数。
  * @param {string} symbol - 股票代码。
- * @returns {object} 小部件的配置。
+ * @returns {object} 小部件的配置对象。
  */
 export const CANDLE_CHART_WIDGET_CONFIG = (symbol: string) => ({
     allow_symbol_change: false,
@@ -254,9 +255,9 @@ export const CANDLE_CHART_WIDGET_CONFIG = (symbol: string) => ({
 });
 
 /**
- * 基线图小部件的配置。
+ * 创建 TradingView 基线图小部件配置的函数。
  * @param {string} symbol - 股票代码。
- * @returns {object} 小部件的配置。
+ * @returns {object} 小部件的配置对象。
  */
 export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
     allow_symbol_change: false,
@@ -285,9 +286,9 @@ export const BASELINE_WIDGET_CONFIG = (symbol: string) => ({
 });
 
 /**
- * 技术分析小部件的配置。
+ * 创建 TradingView 技术分析小部件配置的函数。
  * @param {string} symbol - 股票代码。
- * @returns {object} 小部件的配置。
+ * @returns {object} 小部件的配置对象。
  */
 export const TECHNICAL_ANALYSIS_WIDGET_CONFIG = (symbol: string) => ({
     symbol: symbol.toUpperCase(),
@@ -301,9 +302,9 @@ export const TECHNICAL_ANALYSIS_WIDGET_CONFIG = (symbol: string) => ({
 });
 
 /**
- * 公司简介小部件的配置。
+ * 创建 TradingView 公司简介小部件配置的函数。
  * @param {string} symbol - 股票代码。
- * @returns {object} 小部件的配置。
+ * @returns {object} 小部件的配置对象。
  */
 export const COMPANY_PROFILE_WIDGET_CONFIG = (symbol: string) => ({
     symbol: symbol.toUpperCase(),
@@ -315,9 +316,9 @@ export const COMPANY_PROFILE_WIDGET_CONFIG = (symbol: string) => ({
 });
 
 /**
- * 公司财务小部件的配置。
+ * 创建 TradingView 公司财务状况小部件配置的函数。
  * @param {string} symbol - 股票代码。
- * @returns {object} 小部件的配置。
+ * @returns {object} 小部件的配置对象。
  */
 export const COMPANY_FINANCIALS_WIDGET_CONFIG = (symbol: string) => ({
     symbol: symbol.toUpperCase(),
@@ -331,11 +332,11 @@ export const COMPANY_FINANCIALS_WIDGET_CONFIG = (symbol: string) => ({
 });
 
 /**
- * 热门股票代码。
+ * 热门股票代码列表。
  * @type {string[]}
  */
 export const POPULAR_STOCK_SYMBOLS = [
-    // Tech Giants (the big technology companies)
+    // 科技巨头
     'AAPL',
     'MSFT',
     'GOOGL',
@@ -347,7 +348,7 @@ export const POPULAR_STOCK_SYMBOLS = [
     'ORCL',
     'CRM',
 
-    // Growing Tech Companies
+    // 成长型科技公司
     'ADBE',
     'INTC',
     'AMD',
@@ -359,7 +360,7 @@ export const POPULAR_STOCK_SYMBOLS = [
     'SHOP',
     'ROKU',
 
-    // Newer Tech Companies
+    // 新兴科技公司
     'SNOW',
     'PLTR',
     'COIN',
@@ -371,7 +372,7 @@ export const POPULAR_STOCK_SYMBOLS = [
     'TWLO',
     'ZM',
 
-    // Consumer & Delivery Apps
+    // 消费与配送应用
     'DOCU',
     'PTON',
     'PINS',
@@ -383,7 +384,7 @@ export const POPULAR_STOCK_SYMBOLS = [
     'LCID',
     'NIO',
 
-    // International Companies
+    // 国际公司
     'XPEV',
     'LI',
     'BABA',
@@ -397,14 +398,14 @@ export const POPULAR_STOCK_SYMBOLS = [
 ];
 
 /**
- * 没有市场新闻时显示的消息。
+ * 当没有市场新闻时显示的 HTML 消息。
  * @type {string}
  */
 export const NO_MARKET_NEWS =
     '<p class="mobile-text" style="margin:0 0 20px 0;font-size:16px;line-height:1.6;color:#4b5563;">No market news available today. Please check back tomorrow.</p>';
 
 /**
- * 观察列表格的表头。
+ * 关注列表表格的表头。
  * @type {string[]}
  */
 export const WATCHLIST_TABLE_HEADER = [

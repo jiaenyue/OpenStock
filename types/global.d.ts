@@ -1,8 +1,11 @@
+/**
+ * @file 该文件为整个应用程序定义了全局 TypeScript 类型。
+ * 通过在 `declare global` 块中声明，这些类型可以在任何地方使用，无需显式导入。
+ * 这种方法对于在多个组件和模块之间共享的通用类型定义非常有用。
+ */
 declare global {
     /**
-     * 登录表单的数据类型。
-     * @property {string} email - 用户的电子邮件。
-     * @property {string} password - 用户的密码。
+     * 定义了登录表单的数据结构。
      */
     type SignInFormData = {
         email: string;
@@ -10,10 +13,12 @@ declare global {
     };
 
     /**
-     * 注册表单的数据类型。
-     * @property {string} fullName - 用户的全名。
-     * @property {string} email - 用户的电子邮件。
-     * @property {string} password - 用户的密码。
+     * 定义了注册表单的数据结构。
+     */
+    type SignUpFormData = {
+        fullName: string;
+        email: string;
+        password: string;
         country: string;
         investmentGoals: string;
         riskTolerance: string;
@@ -21,12 +26,7 @@ declare global {
     };
 
     /**
-     * CountrySelectField 组件的属性。
-     * @property {string} name - 表单字段的名称。
-     * @property {string} label - 表单字段的标签。
-     * @property {Control} control - 来自 react-hook-form 的 control 对象。
-     * @property {FieldError} [error] - 来自 react-hook-form 的 error 对象。
-     * @property {boolean} [required] - 指示字段是否为必填项。
+     * 定义了国家选择组件的 props。
      */
     type CountrySelectProps = {
         name: string;
@@ -37,16 +37,7 @@ declare global {
     };
 
     /**
-     * InputField 组件的属性。
-     * @property {string} name - 字段的名称。
-     * @property {string} label - 字段的标签。
-     * @property {string} placeholder - 字段的占位符文本。
-     * @property {string} [type] - 输入类型（例如 "text"、"password"）。
-     * @property {UseFormRegister} register - 来自 react-hook-form 的 register 函数。
-     * @property {FieldError} [error] - 来自 react-hook-form 的 error 对象。
-     * @property {RegisterOptions} [validation] - react-hook-form 的验证规则。
-     * @property {boolean} [disabled] - 指示字段是否被禁用。
-     * @property {string} [value] - 字段的初始值。
+     * 定义了通用表单输入组件的 props。
      */
     type FormInputProps = {
         name: string;
@@ -61,9 +52,7 @@ declare global {
     };
 
     /**
-     * 选择字段的选项。
-     * @property {string} value - 选项的值。
-     * @property {string} label - 选项的标签。
+     * 定义了下拉选择菜单中选项的结构。
      */
     type Option = {
         value: string;
@@ -71,9 +60,7 @@ declare global {
     };
 
     /**
-     * SelectField 组件的属性。
-     * @property {string} name - 字段的名称。
-     * @property {string} label - 字段的标签。
+     * 定义了下拉选择字段组件的 props。
      */
     type SelectFieldProps = {
         name: string;
@@ -86,10 +73,7 @@ declare global {
     };
 
     /**
-     * FooterLink 组件的属性。
-     * @property {string} text - 链接前的文本。
-     * @property {string} linkText - 链接的文本。
-     * @property {string} href - 链接的 URL。
+     * 定义了页脚链接组件的 props。
      */
     type FooterLinkProps = {
         text: string;
@@ -98,10 +82,7 @@ declare global {
     };
 
     /**
-     * SearchCommand 组件的属性。
-     * @property {'button' | 'text'} [renderAs] - 触发器的渲染方式。
-     * @property {string} [label] - 触发器的标签。
-     * @property {StockWithWatchlistStatus[]} initialStocks - 初始股票列表。
+     * 定义了搜索命令组件的 props。
      */
     type SearchCommandProps = {
         renderAs?: 'button' | 'text';
@@ -110,10 +91,7 @@ declare global {
     };
 
     /**
-     * 欢迎邮件的数据类型。
-     * @property {string} email - 收件人的电子邮件。
-     * @property {string} name - 收件人的姓名。
-     * @property {string} intro - 邮件的介绍内容。
+     * 定义了发送欢迎邮件函数所需的数据结构。
      */
     type WelcomeEmailData = {
         email: string;
@@ -122,10 +100,7 @@ declare global {
     };
 
     /**
-     * 用户的数据类型。
-     * @property {string} id - 用户的 ID。
-     * @property {string} name - 用户的姓名。
-     * @property {string} email - 用户的电子邮件。
+     * 定义了用户对象的基本结构。
      */
     type User = {
         id: string;
@@ -134,11 +109,7 @@ declare global {
     };
 
     /**
-     * 股票的数据类型。
-     * @property {string} symbol - 股票代码。
-     * @property {string} name - 公司名称。
-     * @property {string} exchange - 交易所。
-     * @property {string} type - 股票类型。
+     * 定义了股票对象的基本结构。
      */
     type Stock = {
         symbol: string;
@@ -148,19 +119,14 @@ declare global {
     };
 
     /**
-     * 带有观察列表状态的股票数据类型。
-     * @property {boolean} isInWatchlist - 指示股票是否在观察列表中。
+     * 扩展了 Stock 类型，增加了 `isInWatchlist` 字段来表示股票是否在用户的关注列表中。
      */
     type StockWithWatchlistStatus = Stock & {
         isInWatchlist: boolean;
     };
 
     /**
-     * Finnhub 搜索结果的数据类型。
-     * @property {string} symbol - 股票代码。
-     * @property {string} description - 公司描述。
-     * @property {string} [displaySymbol] - 显示的股票代码。
-     * @property {string} type - 股票类型。
+     * 定义了 Finnhub API 搜索结果中单个项目的结构。
      */
     type FinnhubSearchResult = {
         symbol: string;
@@ -170,9 +136,7 @@ declare global {
     };
 
     /**
-     * Finnhub 搜索响应的数据类型。
-     * @property {number} count - 结果数量。
-     * @property {FinnhubSearchResult[]} result - 搜索结果。
+     * 定义了 Finnhub API 搜索响应的整体结构。
      */
     type FinnhubSearchResponse = {
         count: number;
@@ -180,8 +144,7 @@ declare global {
     };
 
     /**
-     * StockDetails 页面的属性。
-     * @property {Promise<{symbol: string}>} params - 页面参数。
+     * 定义了股票详情页面的 props，其中包含一个解析为股票代码的 Promise。
      */
     type StockDetailsPageProps = {
         params: Promise<{
@@ -190,13 +153,7 @@ declare global {
     };
 
     /**
-     * WatchlistButton 组件的属性。
-     * @property {string} symbol - 股票代码。
-     * @property {string} company - 公司名称。
-     * @property {boolean} isInWatchlist - 指示股票是否已在观察列表中。
-     * @property {boolean} [showTrashIcon] - 指示是否显示垃圾桶图标。
-     * @property {'button' | 'icon'} [type] - 按钮的类型。
-     * @property {(symbol: string, isAdded: boolean) => void} [onWatchlistChange] - 当观察列表状态改变时调用的函数。
+     * 定义了关注列表按钮组件的 props。
      */
     type WatchlistButtonProps = {
         symbol: string;
@@ -208,19 +165,15 @@ declare global {
     };
 
     /**
-     * 报价数据的数据类型。
-     * @property {number} [c] - 当前价格。
-     * @property {number} [dp] - 百分比变化。
+     * 定义了从 API 获取的报价数据的结构。
      */
     type QuoteData = {
-        c?: number;
-        dp?: number;
+        c?: number; // 当前价格
+        dp?: number; // 百分比变化
     };
 
     /**
-     * 公司简介数据的数据类型。
-     * @property {string} [name] - 公司名称。
-     * @property {number} [marketCapitalization] - 市值。
+     * 定义了从 API 获取的公司简介数据的结构。
      */
     type ProfileData = {
         name?: string;
@@ -228,18 +181,14 @@ declare global {
     };
 
     /**
-     * 公司财务数据的数据类型。
-     * @property {object} [metric] - 指标。
+     * 定义了从 API 获取的公司财务数据的结构。
      */
     type FinancialsData = {
         metric?: { [key: string]: number };
     };
 
     /**
-     * 选定股票的数据类型。
-     * @property {string} symbol - 股票代码。
-     * @property {string} company - 公司名称。
-     * @property {number} [currentPrice] - 当前价格。
+     * 定义了用户在 UI 中选择的股票的结构。
      */
     type SelectedStock = {
         symbol: string;
@@ -248,25 +197,14 @@ declare global {
     };
 
     /**
-     * WatchlistTable 组件的属性。
-     * @property {StockWithData[]} watchlist - 观察列表。
+     * 定义了关注列表表格组件的 props。
      */
     type WatchlistTableProps = {
         watchlist: StockWithData[];
     };
 
     /**
-     * 带有数据的股票数据类型。
-     * @property {string} userId - 用户 ID。
-     * @property {string} symbol - 股票代码。
-     * @property {string} company - 公司名称。
-     * @property {Date} addedAt - 添加日期。
-     * @property {number} [currentPrice] - 当前价格。
-     * @property {number} [changePercent] - 百分比变化。
-     * @property {string} [priceFormatted] - 格式化的价格。
-     * @property {string} [changeFormatted] - 格式化的变化。
-     * @property {string} [marketCap] - 市值。
-     * @property {string} [peRatio] - 市盈率。
+     * 扩展了关注列表项的类型，增加了从 API 获取的附加数据（如当前价格、市值等）。
      */
     type StockWithData = {
         userId: string;
@@ -282,24 +220,14 @@ declare global {
     };
 
     /**
-     * AlertsList 组件的属性。
-     * @property {Alert[]} [alertData] - 警报数据。
+     * 定义了警报列表组件的 props。
      */
     type AlertsListProps = {
         alertData: Alert[] | undefined;
     };
 
     /**
-     * 市场新闻文章的数据类型。
-     * @property {number} id - 文章 ID。
-     * @property {string} headline - 标题。
-     * @property {string} summary - 摘要。
-     * @property {string} source - 来源。
-     * @property {string} url - URL。
-     * @property {number} datetime - 日期时间。
-     * @property {string} category - 类别。
-     * @property {string} related - 相关信息。
-     * @property {string} [image] - 图片 URL。
+     * 定义了格式化后的市场新闻文章的结构。
      */
     type MarketNewsArticle = {
         id: number;
@@ -314,21 +242,14 @@ declare global {
     };
 
     /**
-     * WatchlistNews 组件的属性。
-     * @property {MarketNewsArticle[]} [news] - 新闻文章。
+     * 定义了关注列表新闻组件的 props。
      */
     type WatchlistNewsProps = {
         news?: MarketNewsArticle[];
     };
 
     /**
-     * SearchCommand 组件的属性。
-     * @property {boolean} [open] - 对话框是否打开。
-     * @property {(open: boolean) => void} [setOpen] - 设置对话框打开状态的函数。
-     * @property {'button' | 'text'} [renderAs] - 触发器的渲染方式。
-     * @property {string} [buttonLabel] - 按钮标签。
-     * @property {'primary' | 'secondary'} [buttonVariant] - 按钮变体。
-     * @property {string} [className] - CSS 类名。
+     * 再次定义了搜索命令组件的 props，存在重复定义，应考虑合并。
      */
     type SearchCommandProps = {
         open?: boolean;
@@ -340,12 +261,7 @@ declare global {
     };
 
     /**
-     * 警报数据的数据类型。
-     * @property {string} symbol - 股票代码。
-     * @property {string} company - 公司名称。
-     * @property {string} alertName - 警报名称。
-     * @property {'upper' | 'lower'} alertType - 警报类型。
-     * @property {string} threshold - 阈值。
+     * 定义了创建或编辑警报时所需的数据结构。
      */
     type AlertData = {
         symbol: string;
@@ -356,12 +272,7 @@ declare global {
     };
 
     /**
-     * AlertModal 组件的属性。
-     * @property {string} [alertId] - 警报 ID。
-     * @property {AlertData} [alertData] - 警报数据。
-     * @property {string} [action] - 操作。
-     * @property {boolean} open - 模态框是否打开。
-     * @property {(open: boolean) => void} setOpen - 设置模态框打开状态的函数。
+     * 定义了警报模态框组件的 props。
      */
     type AlertModalProps = {
         alertId?: string;
@@ -372,10 +283,7 @@ declare global {
     };
 
     /**
-     * 原始新闻文章的数据类型。
-     * @property {number} id - 文章 ID。
-     * @property {string} [headline] - 标题。
-     * @property {string} [summary] - 摘要。
+     * 定义了从 API 获取的原始新闻文章的结构，字段均为可选。
      */
     type RawNewsArticle = {
         id: number;
@@ -390,15 +298,7 @@ declare global {
     };
 
     /**
-     * 警报的数据类型。
-     * @property {string} id - 警报 ID。
-     * @property {string} symbol - 股票代码。
-     * @property {string} company - 公司名称。
-     * @property {string} alertName - 警报名称。
-     * @property {number} currentPrice - 当前价格。
-     * @property {'upper' | 'lower'} alertType - 警报类型。
-     * @property {number} threshold - 阈值。
-     * @property {number} [changePercent] - 百分比变化。
+     * 定义了警报对象的完整结构。
      */
     type Alert = {
         id: string;
@@ -412,4 +312,5 @@ declare global {
     };
 }
 
+// 导出一个空对象以确保该文件被视为一个模块。
 export {};

@@ -8,12 +8,13 @@ const FINNHUB_BASE_URL = 'https://finnhub.io/api/v1';
 const NEXT_PUBLIC_FINNHUB_API_KEY = process.env.NEXT_PUBLIC_FINNHUB_API_KEY ?? '';
 
 /**
- * 从给定的 URL 获取 JSON 数据。
- * @template T
+ * 从指定的 URL 获取 JSON 数据，并可选择性地缓存响应。
+ *
+ * @template T - 期望的 JSON 数据类型。
  * @param {string} url - 要获取数据的 URL。
- * @param {number} [revalidateSeconds] - 缓存重新验证的秒数。
- * @returns {Promise<T>} 解析后的 JSON 数据。
- * @throws {Error} 如果网络请求失败。
+ * @param {number} [revalidateSeconds] - 缓存数据的秒数。如果未提供，则不缓存。
+ * @returns {Promise<T>} - 一个解析为获取到的 JSON 数据的 Promise。
+ * @throws {Error} - 如果网络请求失败或响应状态不为 "ok"。
  */
 async function fetchJSON<T>(url: string, revalidateSeconds?: number): Promise<T> {
     const options: RequestInit & { next?: { revalidate?: number } } = revalidateSeconds
@@ -31,11 +32,14 @@ async function fetchJSON<T>(url: string, revalidateSeconds?: number): Promise<T>
 export { fetchJSON };
 
 /**
- * 获取市场新闻文章。
+ * 从 Finnhub API 获取新闻文章。
  *
- * @param {string[]} [symbols] - 要获取新闻的股票代码数组。
- * @returns {Promise<MarketNewsArticle[]>} 一个市场新闻文章数组。
- * @throws {Error} 如果 API 密钥未配置或新闻获取失败。
+ * 如果提供了股票代码，则会尝试获取这些公司的特定新闻。
+ * 如果没有提供股票代码或找不到公司新闻，则会回退到获取一般市场新闻。
+ *
+ * @param {string[]} [symbols] - 可选的股票代码数组，用于获取公司新闻。
+ * @returns {Promise<MarketNewsArticle[]>} - 一个解析为格式化新闻文章数组的 Promise。
+ * @throws {Error} - 如果 API 密钥未配置或获取新闻失败。
  */
 export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> {
     try {
@@ -50,7 +54,7 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
 
         const maxArticles = 6;
 
-        // If we have symbols, try to fetch company news per symbol and round-robin select
+        // 如果有股票代码，则尝试按代码获取公司新闻
         if (cleanSymbols.length > 0) {
             const perSymbolArticles: Record<string, RawNewsArticle[]> = {};
 
@@ -68,7 +72,7 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
             );
 
             const collected: MarketNewsArticle[] = [];
-            // Round-robin up to 6 picks
+            // 循环收集最多6篇文章
             for (let round = 0; round < maxArticles; round++) {
                 for (let i = 0; i < cleanSymbols.length; i++) {
                     const sym = cleanSymbols[i];
@@ -83,14 +87,13 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
             }
 
             if (collected.length > 0) {
-                // Sort by datetime desc
+                // 按日期时间降序排序
                 collected.sort((a, b) => (b.datetime || 0) - (a.datetime || 0));
                 return collected.slice(0, maxArticles);
             }
-            // If none collected, fall through to general news
         }
 
-        // General market news fallback or when no symbols provided
+        // 如果没有提供股票代码或未找到公司新闻，则回退到一般市场新闻
         const generalUrl = `${FINNHUB_BASE_URL}/news?category=general&token=${token}`;
         const general = await fetchJSON<RawNewsArticle[]>(generalUrl, 300);
 
@@ -102,7 +105,7 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
             if (seen.has(key)) continue;
             seen.add(key);
             unique.push(art);
-            if (unique.length >= 20) break; // cap early before final slicing
+            if (unique.length >= 20) break;
         }
 
         const formatted = unique.slice(0, maxArticles).map((a, idx) => formatArticle(a, false, undefined, idx));
@@ -114,16 +117,19 @@ export async function getNews(symbols?: string[]): Promise<MarketNewsArticle[]> 
 }
 
 /**
- * 搜索股票。
+ * 使用 Finnhub API 搜索股票。
  *
- * @param {string} [query] - 搜索查询。
- * @returns {Promise<StockWithWatchlistStatus[]>} 一个带有观察列表状态的股票数组。
+ * 如果提供了查询字符串，则执行搜索。
+ * 如果查询字符串为空，则返回热门股票列表。
+ * 结果使用 React 的 `cache` 功能进行缓存。
+ *
+ * @param {string} [query] - 用于搜索股票的查询字符串。
+ * @returns {Promise<StockWithWatchlistStatus[]>} - 一个解析为包含股票信息和关注状态的数组的 Promise。如果发生错误，则返回空数组。
  */
 export const searchStocks = cache(async (query?: string): Promise<StockWithWatchlistStatus[]> => {
     try {
         const token = process.env.FINNHUB_API_KEY ?? NEXT_PUBLIC_FINNHUB_API_KEY;
         if (!token) {
-            // If no token, log and return empty to avoid throwing per requirements
             console.error('Error in stock search:', new Error('FINNHUB API key is not configured'));
             return [];
         }
@@ -133,13 +139,12 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
         let results: FinnhubSearchResult[] = [];
 
         if (!trimmed) {
-            // Fetch top 10 popular symbols' profiles
+            // 获取热门股票的简介
             const top = POPULAR_STOCK_SYMBOLS.slice(0, 10);
             const profiles = await Promise.all(
                 top.map(async (sym) => {
                     try {
                         const url = `${FINNHUB_BASE_URL}/stock/profile2?symbol=${encodeURIComponent(sym)}&token=${token}`;
-                        // Revalidate every hour
                         const profile = await fetchJSON<any>(url, 3600);
                         return { sym, profile } as { sym: string; profile: any };
                     } catch (e) {
@@ -161,10 +166,7 @@ export const searchStocks = cache(async (query?: string): Promise<StockWithWatch
                         displaySymbol: symbol,
                         type: 'Common Stock',
                     };
-                    // We don't include exchange in FinnhubSearchResult type, so carry via mapping later using profile
-                    // To keep pipeline simple, attach exchange via closure map stage
-                    // We'll reconstruct exchange when mapping to final type
-                    (r as any).__exchange = exchange; // internal only
+                    (r as any).__exchange = exchange;
                     return r;
                 })
                 .filter((x): x is FinnhubSearchResult => Boolean(x));

@@ -1,12 +1,7 @@
 import React from "react";
 
-/**
- * ODS Logo SVG 组件。
- *
- * @param {object} props - 组件属性。
- * @param {number} [props.size] - SVG 的大小。
- * @returns {JSX.Element} 渲染后的 ODS Logo SVG。
- */
+// SVG version of your logo (image 2)
+// Replace with real SVG for sharpest results; this is an inline approximation
 const ODSLogoSVG: React.FC<{ size?: number }> = ({ size = 26 }) => (
 
     <svg
@@ -147,34 +142,17 @@ const ODSLogoSVG: React.FC<{ size?: number }> = ({ size = 26 }) => (
 
 );
 
-/**
- * OpenDevSocietyBranding 组件的属性。
- * @property {string} [text] - 品牌名称前的文本。
- * @property {string} [name] - 品牌名称。
- * @property {React.CSSProperties} [style] - 应用于内部容器的内联样式。
- * @property {string} [className] - 应用于内部容器的 CSS 类。
- * @property {number} [logoSize] - logo 的大小。
- * @property {string} [textColor] - 文本颜色。
- * @property {React.CSSProperties} [outerStyle] - 应用于外部容器的内联样式。
- * @property {string} [outerClassName] - 应用于外部容器的 CSS 类。
- */
 type OpenDevSocietyBrandingProps = {
-    text?: string;
-    name?: string;
+    text?: string; // e.g. "Designed by"
+    name?: string; // e.g. "Open Dev Society"
     style?: React.CSSProperties;
     className?: string;
     logoSize?: number;
     textColor?: string;
-    outerStyle?: React.CSSProperties;
+    outerStyle?: React.CSSProperties;      // NEW: outer style for container
     outerClassName?: string;
 };
 
-/**
- * 渲染 Open Dev Society 品牌信息。
- *
- * @param {OpenDevSocietyBrandingProps} props - OpenDevSocietyBranding 的属性。
- * @returns {JSX.Element} 一个包含 logo 和文本的品牌组件。
- */
 export const OpenDevSocietyBranding: React.FC<OpenDevSocietyBrandingProps> = ({
                                                                                   text = "Initiative by",
                                                                                   name = "Open Dev Society",

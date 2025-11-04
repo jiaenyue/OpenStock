@@ -7,24 +7,24 @@ import {
     TECHNICAL_ANALYSIS_WIDGET_CONFIG,
     COMPANY_PROFILE_WIDGET_CONFIG,
     COMPANY_FINANCIALS_WIDGET_CONFIG,
-} from '@/lib/constants';
+} from "@/lib/constants";
 
-/**
- * StockDetails 页面的属性。
- * @property {object} params - 页面参数。
- * @property {string} params.symbol - 股票代码。
- */
 type StockDetailsPageProps = {
     params: {
         symbol: string;
-    };
-};
+    }
+}
 
 /**
- * 渲染股票详情页面。
+ * 股票详情页面组件。
  *
- * @param {StockDetailsPageProps} props - StockDetails 页面的属性。
- * @returns {JSX.Element} 股票详情页面。
+ * 该页面展示了特定股票的详细信息，包括符号信息、K线图、基线图、
+ * 技术分析、公司简介和财务状况等多个 TradingView 小部件。
+ *
+ * @param {StockDetailsPageProps} props - 组件的 props。
+ * @param {object} props.params - 包含页面参数的对象。
+ * @param {string} props.params.symbol - 要显示的股票代码。
+ * @returns {Promise<JSX.Element>} 渲染后的股票详情页面。
  */
 export default async function StockDetails({ params }: StockDetailsPageProps) {
     const { symbol } = await params;

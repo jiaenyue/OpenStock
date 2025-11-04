@@ -1,5 +1,15 @@
 /**
- * 用于生成个性化欢迎电子邮件的提示。
+ * @file 该文件包含用于与 AI 模型（如 Gemini）交互的提示模板。
+ * 这些提示用于生成个性化的电子邮件内容、新闻摘要等，并包含详细的格式化要求。
+ */
+
+/**
+ * 用于生成个性化欢迎邮件内容的 AI 提示模板。
+ *
+ * 此提示指导 AI 模型根据用户的个人资料（投资目标、风险承受能力等）
+ * 创建一段高度定制的 HTML 内容。它包含了严格的格式化规则，
+ * 以确保生成的内容能无缝集成到现有的电子邮件模板中。
+ *
  * @type {string}
  */
 export const PERSONALIZED_WELCOME_EMAIL_PROMPT = `Generate highly personalized HTML content that will be inserted into an email template at the {{intro}} placeholder.
@@ -52,7 +62,12 @@ Example personalized outputs (showing obvious customization with TWO sentences):
 <p class="mobile-text" style="margin: 0 0 30px 0; font-size: 16px; line-height: 1.6; color: #CCDADC;">You're all set! Since you're new to investing, we've designed simple tools to help you build confidence while learning the <strong>healthcare sector</strong> you're interested in. Our beginner-friendly alerts will guide you without the confusing jargon.</p>`
 
 /**
- * 用于生成新闻摘要电子邮件的提示。
+ * 用于生成市场新闻摘要电子邮件内容的 AI 提示模板。
+ *
+ * 此提示为 AI 模型提供了详细的指令，用于将原始新闻数据转换成结构化、
+ * 易于阅读的 HTML 格式的电子邮件内容。它规定了标题、段落、
+ * 重点信息和链接等元素的具体样式和结构。
+ *
  * @type {string}
  */
 export const NEWS_SUMMARY_EMAIL_PROMPT = `Generate HTML content for a market news summary email that will be inserted into the NEWS_SUMMARY_EMAIL_TEMPLATE at the {{newsContent}} placeholder.
@@ -207,7 +222,12 @@ Apple Stock Jumped After Great Earnings Report
 </div>`
 
 /**
- * 用于将 Finnhub 股票代码映射到 TradingView 股票代码的提示。
+ * 用于将 Finnhub 股票代码映射到 TradingView 股票代码的 AI 提示模板。
+ *
+ * 此提示要求 AI 模型扮演金融市场专家的角色，根据 Finnhub 提供的股票信息
+ * （代码、公司、交易所等），找到对应的 TradingView 代码。
+ * 它还规定了响应必须是包含代码、置信度和推理的 JSON 对象。
+ *
  * @type {string}
  */
 export const TRADINGVIEW_SYMBOL_MAPPING_PROMPT = `You are an expert in financial markets and trading platforms. Your task is to find the correct TradingView symbol that corresponds to a given Finnhub stock symbol.

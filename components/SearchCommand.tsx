@@ -3,37 +3,15 @@
 import { useEffect, useState } from "react"
 import { CommandDialog, CommandEmpty, CommandInput, CommandList } from "@/components/ui/command"
 import {Button} from "@/components/ui/button";
-import { Loader2, TrendingUp } from 'lucide-react';
-import Link from 'next/link';
-import { searchStocks } from '@/lib/actions/finnhub.actions';
-import { useDebounce } from '@/hooks/useDebounce';
+import {Loader2,  TrendingUp} from "lucide-react";
+import Link from "next/link";
+import {searchStocks} from "@/lib/actions/finnhub.actions";
+import {useDebounce} from "@/hooks/useDebounce";
 
-/**
- * SearchCommand 组件的属性。
- * @property {'button' | 'text'} [renderAs] - 触发器的渲染方式。
- * @property {string} [label] - 触发器的标签。
- * @property {StockWithWatchlistStatus[]} initialStocks - 初始股票列表。
- */
-type SearchCommandProps = {
-    renderAs?: 'button' | 'text';
-    label?: string;
-    initialStocks: StockWithWatchlistStatus[];
-};
-
-/**
- * 渲染一个允许用户搜索股票的命令对话框。
- *
- * @param {SearchCommandProps} props - SearchCommand 的属性。
- * @returns {JSX.Element} 一个搜索命令组件。
- */
-export default function SearchCommand({
-                                        renderAs = 'button',
-                                        label = 'Add stock',
-                                        initialStocks,
-                                    }: SearchCommandProps) {
-    const [open, setOpen] = useState(false);
-    const [searchTerm, setSearchTerm] = useState('');
-    const [loading, setLoading] = useState(false);
+export default function SearchCommand({ renderAs = 'button', label = 'Add stock', initialStocks }: SearchCommandProps) {
+    const [open, setOpen] = useState(false)
+    const [searchTerm, setSearchTerm] = useState("")
+    const [loading, setLoading] = useState(false)
     const [stocks, setStocks] = useState<StockWithWatchlistStatus[]>(initialStocks);
 
     const isSearchMode = !!searchTerm.trim();

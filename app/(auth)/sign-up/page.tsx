@@ -14,26 +14,6 @@ import OpenDevSocietyBranding from '@/components/OpenDevSocietyBranding';
 import React from 'react';
 
 /**
- * 注册表单的数据类型。
- * @property {string} fullName - 用户的全名。
- * @property {string} email - 用户的电子邮件。
- * @property {string} password - 用户的密码。
- * @property {string} country - 用户的国家。
- * @property {string} investmentGoals - 用户的投资目标。
- * @property {string} riskTolerance - 用户的风险承受能力。
- * @property {string} preferredIndustry - 用户的首选行业。
- */
-type SignUpFormData = {
-    fullName: string;
-    email: string;
-    password: string;
-    country: string;
-    investmentGoals: string;
-    riskTolerance: string;
-    preferredIndustry: string;
-};
-
-/**
  * 渲染一个注册表单。
  *
  * @returns {JSX.Element} 一个注册表单。

@@ -1,16 +1,11 @@
 import Link from "next/link";
-import Image from 'next/image';
-import OpenDevSocietyBranding from './OpenDevSocietyBranding';
+import Image from "next/image";
+import OpenDevSocietyBranding from "./OpenDevSocietyBranding";
 
-/**
- * 渲染网站的页脚。
- *
- * @returns {JSX.Element} 一个包含品牌信息、链接和版权声明的页脚。
- */
 const Footer = () => {
     return (
-        <footer className='bg-gray-900 text-white border-t border-gray-800'>
-            <div className='container mx-auto px-4 py-12'>
+        <footer className="bg-gray-900 text-white border-t border-gray-800">
+            <div className="container mx-auto px-4 py-12">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                     {/* Brand Section */}
                     <div className="col-span-1 md:col-span-2">
