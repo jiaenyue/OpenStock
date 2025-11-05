@@ -8,11 +8,16 @@ import {signInWithEmail, signUpWithEmail} from "@/lib/actions/auth.actions";
 import {toast} from "sonner";
 import {signInEmail} from "better-auth/api";
 import {useRouter} from "next/navigation";
-import OpenDevSocietyBranding from "@/components/OpenDevSocietyBranding";
-import React from "react";
+import OpenDevSocietyBranding from '@/components/OpenDevSocietyBranding';
+import React from 'react';
 
+/**
+ * 渲染一个登录表单。
+ *
+ * @returns {JSX.Element} 一个登录表单。
+ */
 const SignIn = () => {
-    const router = useRouter()
+    const router = useRouter();
     const {
         register,
         handleSubmit,

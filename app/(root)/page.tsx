@@ -7,6 +7,14 @@ import {
 } from "@/lib/constants";
 import {sendDailyNewsSummary} from "@/lib/inngest/functions";
 
+/**
+ * 首页组件，用于展示多个 TradingView 小部件。
+ *
+ * 这个组件渲染了市场概览、股票热图、市场报价和头条新闻等多个 TradingView 小部件，
+ * 为用户提供了一个全面的金融市场信息展示页面。
+ *
+ * @returns {JSX.Element} 渲染后的首页组件。
+ */
 const Home = () => {
     const scriptUrl = `https://s3.tradingview.com/external-embedding/embed-widget-`;
 

@@ -1,12 +1,18 @@
 "use client"
 
-import { useTheme } from "next-themes"
-import { Toaster as Sonner, ToasterProps } from "sonner"
+import { useTheme } from 'next-themes';
+import { Toaster as Sonner, ToasterProps } from 'sonner';
 
+/**
+ * 一个通知组件。
+ *
+ * @param {ToasterProps} props - 组件属性。
+ * @returns {JSX.Element} 渲染后的通知组件。
+ */
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+    const { theme = 'system' } = useTheme();
 
-  return (
+    return (
     <Sonner
       theme={theme as ToasterProps["theme"]}
       className="toaster group"

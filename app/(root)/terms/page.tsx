@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   description: 'Fair terms of service - built on trust, transparency, and community values',
 };
 
+/**
+ * 服务条款页面组件。
+ *
+ * 该页面展示了 OpenStock 的服务条款，以清晰、易懂的语言解释了用户和平台的权利与责任。
+ * 内容强调了社区价值观、免费承诺和透明度。
+ *
+ * @returns {JSX.Element} 渲染后的服务条款页面。
+ */
 export default function TermsPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">

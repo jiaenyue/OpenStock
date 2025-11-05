@@ -5,6 +5,14 @@ export const metadata: Metadata = {
   description: 'Free and open API documentation for OpenStock platform - no paywalls, no barriers',
 };
 
+/**
+ * API 文档页面组件。
+ *
+ * 该页面提供了 OpenStock API 的详细文档，包括其理念、社区支持和开源承诺。
+ * 旨在为开发者提供一个免费、开放且易于使用的 API 指南。
+ *
+ * @returns {JSX.Element} 渲染后的 API 文档页面。
+ */
 export default function ApiDocsPage() {
   return (
     <div className="container mx-auto px-4 py-12 max-w-4xl">

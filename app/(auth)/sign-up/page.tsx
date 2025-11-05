@@ -10,11 +10,16 @@ import FooterLink from "@/components/forms/FooterLink";
 import {signUpWithEmail} from "@/lib/actions/auth.actions";
 import {useRouter} from "next/navigation";
 import {toast} from "sonner";
-import OpenDevSocietyBranding from "@/components/OpenDevSocietyBranding";
-import React from "react";
+import OpenDevSocietyBranding from '@/components/OpenDevSocietyBranding';
+import React from 'react';
 
+/**
+ * 渲染一个注册表单。
+ *
+ * @returns {JSX.Element} 一个注册表单。
+ */
 const SignUp = () => {
-    const router = useRouter()
+    const router = useRouter();
     const {
         register,
         handleSubmit,

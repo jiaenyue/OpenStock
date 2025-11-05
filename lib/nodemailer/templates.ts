@@ -1,3 +1,20 @@
+/**
+ * @file 该文件包含应用程序发送的各种电子邮件的 HTML 模板。
+ *
+ * 每个模板都是一个包含占位符（例如 `{{name}}`）的字符串字面量，
+ * 这些占位符在发送电子邮件之前会被实际数据替换。
+ * 模板设计为响应式，并支持暗黑模式。
+ */
+
+/**
+ * 新用户欢迎邮件的 HTML 模板。
+ *
+ * 占位符:
+ * - `{{name}}`: 用户的姓名。
+ * - `{{intro}}`: 由 AI 生成的个性化介绍段落。
+ *
+ * @type {string}
+ */
 export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -165,6 +182,15 @@ export const WELCOME_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
+/**
+ * 每日新闻摘要邮件的 HTML 模板。
+ *
+ * 占位符:
+ * - `{{date}}`: 当天的日期。
+ * - `{{newsContent}}`: 由 AI 生成的包含新闻摘要的 HTML 内容。
+ *
+ * @type {string}
+ */
 export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -304,6 +330,19 @@ export const NEWS_SUMMARY_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
+/**
+ * 股价上涨警报邮件的 HTML 模板。
+ *
+ * 当股价超过用户设定的上限时发送。
+ * 占位符:
+ * - `{{symbol}}`: 股票代码。
+ * - `{{company}}`: 公司名称。
+ * - `{{timestamp}}`: 警报触发的时间戳。
+ * - `{{currentPrice}}`: 当前股价。
+ * - `{{targetPrice}}`: 用户设定的目标价。
+ *
+ * @type {string}
+ */
 export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -512,6 +551,19 @@ export const STOCK_ALERT_UPPER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
+/**
+ * 股价下跌警报邮件的 HTML 模板。
+ *
+ * 当股价低于用户设定的下限时发送。
+ * 占位符:
+ * - `{{symbol}}`: 股票代码。
+ * - `{{company}}`: 公司名称。
+ * - `{{timestamp}}`: 警报触发的时间戳。
+ * - `{{currentPrice}}`: 当前股价。
+ * - `{{targetPrice}}`: 用户设定的目标价。
+ *
+ * @type {string}
+ */
 export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -705,7 +757,7 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
                                 </p>
                                 <p style="margin: 0 0 10px 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
                                     <a href="#" style="color: #CCDADC !important; text-decoration: underline;">Unsubscribe</a> |
-                                    <a href="https://openstock-ods.vercel.app/" style="color: #CCDADC !important; text-decoration: underline;">Visit Openstock</a>
+                                    <a href="https://openstock-ods.vercel.app" style="color: #CCDADC !important; text-decoration: underline;">Visit Openstock</a>
                                 </p>
                                 <p style="margin: 0; font-size: 14px; line-height: 1.5; color: #CCDADC !important;">
                                     © 2025 Open Dev Society
@@ -721,6 +773,25 @@ export const STOCK_ALERT_LOWER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
+/**
+ * 交易量警报邮件的 HTML 模板。
+ *
+ * 当股票的交易量出现异常（例如，远高于平均水平）时发送。
+ * 占位符:
+ * - `{{symbol}}`: 股票代码。
+ * - `{{company}}`: 公司名称。
+ * - `{{timestamp}}`: 警报触发的时间戳。
+ * - `{{currentVolume}}`: 当前交易量。
+ * - `{{averageVolume}}`: 平均交易量。
+ * - `{{currentPrice}}`: 当前股价。
+ * - `{{changePercent}}`: 价格变动百分比。
+ * - `{{priceColor}}`: 根据价格变动（上涨/下跌）的颜色。
+ * - `{{changeDirection}}`: 价格变动方向的符号（+ 或 -）。
+ * - `{{alertMessage}}`: 描述警报触发原因的消息。
+ * - `{{volumeSpike}}`: 描述交易量激增情况的消息。
+ *
+ * @type {string}
+ */
 export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -941,6 +1012,15 @@ export const VOLUME_ALERT_EMAIL_TEMPLATE = `<!DOCTYPE html>
 </body>
 </html>`;
 
+/**
+ * 不活跃用户提醒邮件的 HTML 模板。
+ *
+ * 当用户一段时间未登录时发送，旨在鼓励他们返回并使用应用。
+ * 占位符:
+ * - `{{name}}`: 用户的姓名。
+ *
+ * @type {string}
+ */
 export const INACTIVE_USER_REMINDER_EMAIL_TEMPLATE = `<!DOCTYPE html>
 <html lang="en">
 <head>

@@ -22,6 +22,14 @@ import { Check, ChevronsUpDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import countryList from 'react-select-country-list';
 
+/**
+ * CountrySelectField 组件的属性。
+ * @property {string} name - 表单字段的名称。
+ * @property {string} label - 表单字段的标签。
+ * @property {Control<any>} control - 来自 react-hook-form 的 control 对象。
+ * @property {FieldError} [error] - 来自 react-hook-form 的 error 对象。
+ * @property {boolean} [required] - 指示字段是否为必填项。
+ */
 type CountrySelectProps = {
     name: string;
     label: string;
@@ -30,6 +38,14 @@ type CountrySelectProps = {
     required?: boolean;
 };
 
+/**
+ * 渲染一个允许用户从列表中选择国家的下拉组件。
+ *
+ * @param {object} props - 组件属性。
+ * @param {string} props.value - 当前选中的国家值。
+ * @param {(value: string) => void} props.onChange - 当国家选择改变时调用的函数。
+ * @returns {JSX.Element} 一个带有国家列表的弹出式选择器。
+ */
 const CountrySelect = ({
                            value,
                            onChange,
@@ -115,6 +131,12 @@ const CountrySelect = ({
     );
 };
 
+/**
+ * 使用 react-hook-form 包装 CountrySelect 组件的表单字段。
+ *
+ * @param {CountrySelectProps} props - CountrySelectField 的属性。
+ * @returns {JSX.Element} 一个带有标签、国家选择器和错误消息的表单字段。
+ */
 export const CountrySelectField = ({
                                        name,
                                        label,

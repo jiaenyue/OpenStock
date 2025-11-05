@@ -6,6 +6,14 @@ export const metadata: Metadata = {
   description: 'Free help and community support - no barriers, just guidance',
 };
 
+/**
+ * 帮助中心页面组件。
+ *
+ * 该页面提供常见问题解答（FAQ）、社区支持链接以及 OpenStock 的帮助理念。
+ * 旨在为用户提供一个友好、易于访问的支持中心。
+ *
+ * @returns {JSX.Element} 渲染后的帮助中心页面。
+ */
 export default function HelpPage() {
   const faqs = [
     {

@@ -2,14 +2,20 @@ import Link from "next/link";
 import React from "react";
 import Image from "next/image";
 import {headers} from "next/headers";
-import {redirect} from "next/navigation";
-import {auth} from "@/lib/better-auth/auth";
+import { redirect } from 'next/navigation';
+import { auth } from '@/lib/better-auth/auth';
 
-const Layout = async ({ children }: { children : React.ReactNode }) => {
+/**
+ * 身份验证页面的布局。
+ *
+ * @param {object} props - 组件属性。
+ * @param {React.ReactNode} props.children - 要渲染的子组件。
+ * @returns {JSX.Element} 身份验证页面的布局。
+ */
+const Layout = async ({ children }: { children: React.ReactNode }) => {
+    const session = await auth.api.getSession({ headers: await headers() });
 
-    const session = await auth.api.getSession({headers: await headers()});
-
-    if (session?.user) redirect('/')
+    if (session?.user) redirect('/');
     return (
         <main className="auth-layout">
             <section className="auth-left-section scrollbar-hide-default">
